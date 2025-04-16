@@ -20,8 +20,9 @@ bash_unit - bash unit testing enterprise edition framework for professionals!
 run them and, in case of failure, displays the stack trace
 with source file and line number indications to locate the problem.
 
-You might want to take a look at link:getting_started[how to get started]
-before continuing reading this documentation.
+Need a quick start? The
+https://github.com/bash-unit/getting_started/[getting started project]
+will help you get on track in no time.
 
 The following functions are available in your tests (see below for detailed documentation):
 
