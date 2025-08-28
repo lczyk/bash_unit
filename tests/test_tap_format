@@ -27,7 +27,7 @@ test_tap_format_for_one_failing_test() {
 "\
 # Running tests in code
 not ok - test_not_ok
-# code:2:test_not_ok()
+# ./code:2:test_not_ok()
 1..1" \
 "$(bash_unit_out_for_code <<EOF
   test_not_ok() {
@@ -74,7 +74,7 @@ test_tap_format_for_failing_test_with_stdout_stderr_outputs() {
 not ok - test_not_ok
 # out> message on stdout
 # err> message on stderr
-# code:2:test_not_ok()
+# ./code:2:test_not_ok()
 1..1" \
 "$(bash_unit_out_for_code <<EOF
   test_not_ok() {
@@ -90,7 +90,7 @@ test_assertion_message_is_tap_formatted() {
 # Running tests in code
 not ok - test_not_ok
 # obvious failure
-# code:2:test_not_ok()
+# ./code:2:test_not_ok()
 1..1" \
 "$(bash_unit_out_for_code <<EOF
   test_not_ok() {
@@ -107,7 +107,7 @@ test_multi_lines_assertion_message_is_tap_formatted() {
 not ok - test_not_ok
 # obvious failure
 # on multiple lines
-# code:2:test_not_ok()
+# ./code:2:test_not_ok()
 1..1" \
 "$(bash_unit_out_for_code <<EOF
   test_not_ok() {

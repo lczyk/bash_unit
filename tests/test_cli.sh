@@ -5,7 +5,7 @@ test_run_all_tests_even_in_case_of_failure() {
 "\
 Running tests in code
 	Running test_fails ... FAILURE
-code:2:test_fails()
+./code:2:test_fails()
 	Running test_succeed ... SUCCESS
 Overall resultcode: FAILURE\
 " \

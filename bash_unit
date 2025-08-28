@@ -580,7 +580,7 @@ do
     then
       cd "$(dirname "$test_file")"
       # shellcheck disable=1090
-      source "$(basename "$test_file")"
+      source "./$(basename "$test_file")"
     else
       # shellcheck disable=1090
       source "$test_file"
