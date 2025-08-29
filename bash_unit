@@ -220,7 +220,7 @@ run_test_suite() {
   then
     run_tests || failure=$?
   else
-    failure=$?
+    failure=1
   fi
   run_teardown_suite
 
