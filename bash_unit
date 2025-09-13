@@ -218,7 +218,8 @@ run_test_suite() {
 
   if run_setup_suite
   then
-    run_tests || failure=$?
+    run_tests
+    failure=$?
   else
     failure=1
   fi
@@ -273,8 +274,16 @@ run_tests() {
     (
       local status=0
       declare -F | "$GREP" ' setup$' >/dev/null && setup
-      (__bash_unit_current_test__="$test" run_test) || status=$?
-      declare -F | "$GREP" ' teardown$' >/dev/null && teardown
+      # make sure teardown runs even if the test fails
+      local has_teardown=0
+      # shellcheck disable=SC2034  # foo appears unused. Verify it or export it.
+      declare -F | "$GREP" ' teardown$' >/dev/null && has_teardown=1
+      trap '((has_teardown)) && teardown' EXIT
+
+      # NOTE: we do *not* want to use the || or && syntax with the subshell
+      # below because it would cause the set -e in run_test to be ignored
+      ( __bash_unit_current_test__="$test" run_test )
+      status=$?
       exit $status
     )
     failure=$(( $? || failure))
@@ -284,9 +293,18 @@ run_tests() {
 }
 
 run_test() {
-  set -e
   notify_test_starting "$__bash_unit_current_test__"
-  "$__bash_unit_current_test__" && notify_test_succeeded "$__bash_unit_current_test__"
+  (
+    set -e
+    "$__bash_unit_current_test__"
+  )
+  local status=$?
+  if (( $status != 0 )); then
+    # notify_test_failed "$__bash_unit_current_test__"
+    exit $status
+  else
+    notify_test_succeeded "$__bash_unit_current_test__"
+  fi
 }
 
 run_teardown_suite() {
