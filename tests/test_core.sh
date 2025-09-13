@@ -151,7 +151,8 @@ test_assert_status_code_fails() {
 test_assert_shows_stderr_on_failure() {
   message="$(with_bash_unit_err \
     assert 'echo some error message >&2; echo some ok message; echo another ok message; exit 2'
-  )"
+  )" || true
+  # )"
 
   assert_equals "\
 some error message" \
@@ -161,7 +162,8 @@ some error message" \
 test_assert_shows_stdout_on_failure() {
   message="$(with_bash_unit_out \
     assert 'echo some error message >&2; echo some ok message; echo another ok message; exit 2'
-  )"
+  )" || true
+  # )"
 
   assert_equals "\
 some ok message
