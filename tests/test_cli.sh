@@ -45,6 +45,13 @@ EOF
 )"
 }
 
+test_exit_code_not_0_in_case_of_non_zero_exit_code_followed_by_zero_exit_code() {
+  assert_fails "$BASH_UNIT <($CAT << EOF
+function test_fails()   { false ; true ; }
+EOF
+)"
+}
+
 test_run_all_file_parameters() {
   bash_unit_output=$($BASH_UNIT \
     <(echo "test_one() { echo -n ; }") \
