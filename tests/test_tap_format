@@ -8,7 +8,7 @@ test_bash_unit_rejects_invalid_format() {
   assert_fails "$BASH_UNIT -f invalid_format"
 }
 
-test_tap_format_for_one_succesfull_test() {
+test_tap_format_for_one_successful_test() {
   assert_equals \
 "\
 # Running tests in code

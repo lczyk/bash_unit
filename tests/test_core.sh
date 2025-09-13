@@ -338,6 +338,6 @@ mute() {
   notify_stack         () { $CAT >/dev/null ; }
   notify_stdout        () { : ; }
   notify_stderr        () { : ; }
-  notify_suites_succeded () { : ; }
+  notify_suites_succeeded () { : ; }
   notify_suites_failed   () { : ; }
 }

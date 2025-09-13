@@ -407,7 +407,7 @@ text_format() {
   notify_stack() {
     color "$YELLOW"
   }
-  notify_suites_succeded() {
+  notify_suites_succeeded() {
     echo -n "Overall result: SUCCESS" | pretty_success
     echo
   }
@@ -460,7 +460,7 @@ tap_format() {
   notify_stack() {
     "$SED" 's:^:# :' | color "$YELLOW"
   }
-  notify_suites_succeded() {
+  notify_suites_succeeded() {
     local message="$1"
     echo "1..$message"
   }
@@ -595,7 +595,7 @@ if ((failure))
 then
   notify_suites_failed "$(cat "${TEST_COUNT_FILE}")"
 else
-  notify_suites_succeded "$(cat "${TEST_COUNT_FILE}")"
+  notify_suites_succeeded "$(cat "${TEST_COUNT_FILE}")"
 fi
 
 exit $failure
