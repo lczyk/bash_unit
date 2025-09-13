@@ -598,7 +598,7 @@ test_obvious_notmatching_with_assert_not_matches(){
 'a string' should not match 'a str.*'
  expected regex [a str.*] should not match but matched [a string]
 doc:2:test_obvious_matching_with_assert_not_matches()
-	Running test_obvious_nonmatching_with_assert_not_matches ... SUCCESS
+	Running test_obvious_notmatching_with_assert_not_matches ... SUCCESS
 ```
 
 === *assert_within_delta*
